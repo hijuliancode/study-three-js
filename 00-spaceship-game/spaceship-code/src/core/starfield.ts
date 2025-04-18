@@ -5,7 +5,7 @@ export class Starfield {
 
   constructor(
     private readonly scene: Scene,
-    private readonly starQuantity: number = 3000,
+    private readonly starQuantity: number = 30000,
     private readonly range: number = 1000,
   ) {
     this.createStarfield()

@@ -3,7 +3,7 @@ import { GLTF, GLTFLoader } from "three/examples/jsm/Addons.js";
 import { InputController } from "./input.controller";
 
 export class Spaceship {
-  private declare model: Object3D;
+  public declare model: Object3D;
   private readonly gltfLoader = new GLTFLoader();
   private readonly speed = 0.2;
   private readonly rotationSpeed = 0.05;
@@ -35,18 +35,18 @@ export class Spaceship {
       this.model.translateZ(-this.speed);
     }
     if (this.inputController.isPressed("KeyA") || this.inputController.isPressed("ArrowLeft")) {
-      this.model.rotateY(this.speed);
+      this.model.rotateY(this.rotationSpeed);
     }
     if (this.inputController.isPressed("KeyD") || this.inputController.isPressed("ArrowRight")) {
-      this.model.rotateY(-this.speed);
+      this.model.rotateY(-this.rotationSpeed);
     }
 
     // Rotation
     if (this.inputController.isPressed("KeyQ")) {
-      this.model.translateX(+this.rotationSpeed);
+      this.model.translateX(+this.speed);
     }
     if (this.inputController.isPressed("KeyE")) {
-      this.model.translateX(-this.rotationSpeed);
+      this.model.translateX(-this.speed);
     }
     if (this.inputController.isPressed("Space")) {
       this.model.translateY(-this.speed);
@@ -57,7 +57,7 @@ export class Spaceship {
 
     // jumps
     if (this.inputController.isPressed("KeyJ")) {
-      this.model.translateZ(this.speed * 5);
+      this.model.translateZ(this.speed * 15);
     }
 
     // reset position
