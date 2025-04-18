@@ -35,18 +35,18 @@ export class Spaceship {
       this.model.translateZ(-this.speed);
     }
     if (this.inputController.isPressed("KeyA") || this.inputController.isPressed("ArrowLeft")) {
-      this.model.translateX(this.speed);
+      this.model.rotateY(this.speed);
     }
     if (this.inputController.isPressed("KeyD") || this.inputController.isPressed("ArrowRight")) {
-      this.model.translateX(-this.speed);
+      this.model.rotateY(-this.speed);
     }
 
     // Rotation
     if (this.inputController.isPressed("KeyQ")) {
-      this.model.rotateY(+this.rotationSpeed);
+      this.model.translateX(+this.rotationSpeed);
     }
     if (this.inputController.isPressed("KeyE")) {
-      this.model.rotateY(-this.rotationSpeed);
+      this.model.translateX(-this.rotationSpeed);
     }
     if (this.inputController.isPressed("Space")) {
       this.model.translateY(-this.speed);

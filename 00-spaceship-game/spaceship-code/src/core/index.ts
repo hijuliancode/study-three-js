@@ -1,6 +1,7 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, DirectionalLight } from "three"
 import { Spaceship } from "./spaceship";
 import { InputController } from "./input.controller";
+import { Starfield } from "./starfield";
 
 export class App {
   private canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -19,6 +20,7 @@ export class App {
 
   createInstances() {
     this.spaceship.loadModel()
+    new Starfield(this.scene)
   }
 
   private config(): void {
@@ -28,10 +30,10 @@ export class App {
   }
 
   private createLights(): void {
-    const ambientLight = new AmbientLight(0x404040, 2); // soft white light
+    const ambientLight = new AmbientLight(0x404040, 10); // soft white light
     this.scene.add(ambientLight);
 
-    const directionalLight = new DirectionalLight(0xffffff, 1);
+    const directionalLight = new DirectionalLight(0xffffff, 2);
     this.scene.add(directionalLight);
   }
 
