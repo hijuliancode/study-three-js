@@ -18,6 +18,7 @@ export class App {
     this.createLights();
     this.createInstances();
     this.animate();
+    window.addEventListener('resize', this.onResize.bind(this))
   }
 
   createInstances() {
@@ -44,6 +45,12 @@ export class App {
     this.spaceship.update();
     this.cameraController.update()
     requestAnimationFrame(this.animate.bind(this));
+  }
+
+  private onResize(): void {
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.perspectiveCamera.aspect = window.innerWidth / window.innerHeight;
+    this.perspectiveCamera.updateProjectionMatrix()
   }
 
 }
