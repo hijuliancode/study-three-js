@@ -2,6 +2,13 @@ import './style.css'
 import { App } from './core'
 
 document.addEventListener('DOMContentLoaded', () => {
-  new App();
+  App.start();
+  App.start();
+  App.start();
+  App.start();
+  App.start();
+
+  App.start();
+  App.start();
 })
 

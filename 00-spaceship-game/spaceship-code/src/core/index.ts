@@ -5,6 +5,7 @@ import { Starfield } from "./starfield";
 import { CameraController } from "./camera.controller";
 
 export class App {
+  private declare static instance: App;
   private canvas = document.getElementById("canvas") as HTMLCanvasElement;
   private scene = new Scene();
   private renderer = new WebGLRenderer({ canvas: this.canvas, antialias: true });
@@ -13,12 +14,19 @@ export class App {
   private spaceship = new Spaceship(this.scene, this.inputController, 0.2);
   private readonly cameraController = new CameraController(this.perspectiveCamera, this.spaceship);
 
-  constructor() {
+  private constructor() {
     this.config();
     this.createLights();
     this.createInstances();
     this.animate();
     window.addEventListener('resize', this.onResize.bind(this))
+  }
+
+  public static start() {
+    if (this.instance) return;
+
+    console.log('App started')
+    App.instance = new App;
   }
 
   createInstances() {
